@@ -483,6 +483,7 @@ export default function Front(){
                                 <li className="text-sm">Berlin or remote</li>
                                 <li className="text-sm">$65-85k, 0.5-1.50% equity share options</li>
                             </ul>
+                            <button className="mt-4 px-6 py-2 rounded-full bg-black text-white">info</button>
                         </div>
                         <div className="p-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
