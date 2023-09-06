@@ -177,7 +177,7 @@ export default function Front(){
                             <Image src={flower} alt="leaf" className=""/>
                         </div>
                         <Image src={leaf} alt="leaf" className="absolute right-32 top-28 -rotate-45"/>
-                        <Image src={profile} alt="leaf" className="absolute"/>
+                        <Image src={profile} alt="leaf" className="absolute bottom-24 left-28 w-44"/>
 
 
                         <div className="flex mt-20">
@@ -196,7 +196,8 @@ export default function Front(){
                 </div>
 
                 {/* fifth div */}
-                <div className="mt-28 px-28 flex flex-col items-center">
+                <div className="relative mt-28 px-28 flex flex-col items-center">
+                    <Image src={bluish} alt="bluish " className="absolute left-1/2 top-5 w-16 rotate-12"/>
                     <p className="font-semibold text-lg pb-3 self-start">Wrong with self-improvement & how we're fixing it.</p>
                     <p className="text-5xl font-bold self-start">Self-improvement. Ugh.</p>
 
@@ -387,9 +388,9 @@ export default function Front(){
 
                         <div className="flex justify-between">
                             <div className=" bg-white rounded-xl pt-2 self-start  shadow-xl">
-                                <Image src={purplespirit} alt="spirit" className="pt-6 ml-6"/>
+                                <Image src={purplespirit} alt="spirit" className="pt-6 ml-10"/>
 
-                                <div className="py-6 px-6">
+                                <div className="py-6 px-10">
                                     <p className="font-semibold py-2 text-xl">About</p>
                                     <p className="text-textgray">
                                         At ahead our goal is to make self- <br />
@@ -399,7 +400,7 @@ export default function Front(){
                                     </p>
                                 </div>
 
-                                <div className="rounded-xl bg-productbackground px-6 py-6">
+                                <div className="rounded-xl bg-productbackground px-10 py-6">
                                     <p className="font-semibold py-2 text-xl">Product</p>
                                     <p className="text-textgray">
                                         Sure, you could spend ages reading books or <br />
@@ -409,7 +410,7 @@ export default function Front(){
                                 </div>
                             </div>
 
-                            <div className="flex flex-col flex-shrink-0 overflow-y-scroll pr-12 pb-4 h-33 gap-4 self-start scrollingg">
+                            <div className="flex flex-col flex-shrink-0 overflow-y-scroll pr-16 pb-4 h-33 gap-4 self-start scrollingg">
 
                                 <div className="px-5 py-6 bg-white rounded-xl flex-shrink-0">
                                     <p className="font-semibold mb-3">
@@ -477,26 +478,26 @@ export default function Front(){
                     <div className="flex gap-5">
                         <div className="py-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
-                            <ul className="list-disc pl-4">
-                                <li>Full-time position</li>
-                                <li>Berlin or remote</li>
-                                <li>$65-85k, 0.5-1.50% equity share options</li>
+                            <ul className="list-disc pl-4 flex flex-col gap-3">
+                                <li className="text-sm">Full-time position</li>
+                                <li className="text-sm">Berlin or remote</li>
+                                <li className="text-sm">$65-85k, 0.5-1.50% equity share options</li>
                             </ul>
                         </div>
                         <div className="p-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
-                            <ul className="list-disc pl-4">
-                                <li>Full-time position</li>
-                                <li>Berlin or remote</li>
-                                <li>$65-85k, 0.5-1.50% equity share options</li>
+                            <ul className="list-disc pl-4 flex flex-col gap-3">
+                                <li className="text-sm">Full-time position</li>
+                                <li className="text-sm">Berlin or remote</li>
+                                <li className="text-sm">$65-85k, 0.5-1.50% equity share options</li>
                             </ul>
                         </div>
                         <div className="p-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
-                            <ul className="list-disc pl-4">
-                                <li>Full-time position</li>
-                                <li>Berlin or remote</li>
-                                <li>$65-85k, 0.5-1.50% equity share options</li>
+                            <ul className="list-disc pl-4 flex flex-col gap-3">
+                                <li className="text-sm">Full-time position</li>
+                                <li className="text-sm">Berlin or remote</li>
+                                <li className="text-sm">$65-85k, 0.5-1.50% equity share options</li>
                             </ul>
                         </div>
                     </div>
