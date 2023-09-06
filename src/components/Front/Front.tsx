@@ -11,6 +11,15 @@ import no2 from '../../../public/others icons/no2.png';
 import no3 from '../../../public/others icons/no3.png';
 import purplespirit from '../../../public/cartoons/spiritpurple.png';
 import smiley from '../../../public/smily.jpg'
+    // div1 images
+import phone from '../../../public/div1/phone-removebg-preview.png';
+import redish from '../../../public/div1/redishangry-removebg-preview.png';
+import purplish from '../../../public/div1/purplesmiling-removebg-preview.png';
+import bluish from '../../../public/div1/bluishcrying-removebg-preview.png';
+    // div4 images
+import flower from '../../../public/div4/flower.png';
+import profile from '../../../public/div4/profile.png';
+import leaf from '../../../public/div4/leaf.png';
 
 
 
@@ -23,10 +32,20 @@ export default function Front(){
 
                 {/* first section */}
                 <div className="px-8 ">
-                    <div className="bg-regal-blue py-28 rounded-3xl px-10">
-                        <div className="flex flex-col">
-                            <p className='font-semibold mb-4'>Ahead app</p>
-                            <p className="leading-12 text-5xl font-bold">
+                    <div className="relative flex justify-between bg-regal-blue py-24 rounded-3xl px-16 overflow-hidden">
+                        <div className="absolute h-9 w-9 bg-red-500 rounded-full z-10 -bottom-5 left-44"></div>
+                        <div className="absolute h-9 w-9 bg-red-300 rounded-full z-10 -left-3 bottom-24"></div>
+                        <div className="absolute h-8 w-8 bg-red-300 rounded-full z-10 right-48 -top-2"></div>
+                        <div className="absolute h-5 w-5 bg-red-300 rounded-full z-10 left-1/3 top-20"></div>
+                        <div className="absolute h-6 w-6 bg-orange-300 rounded-full flex justify-center items-center left-1/4 top-28">
+                            <div className="h-3 w-3 bg-orange-600 rounded-full"></div>
+                        </div>
+                        <div className="absolute h-7 w-14 bg-green-400 rounded-t-full left-1/4 top-16 rotate-45"></div>
+                        <div className="absolute h-8 w-16 bg-green-500 rounded-t-full left-24 -top-3 -rotate-45"></div>
+
+                        <div className="flex flex-col z-20">
+                            <p className='font-semibold mb-4 z-20'>Ahead app</p>
+                            <p className=" text-7xl font-bold">
                                 Master your life <br />
                                 by mastering <br />
                                 emotions
@@ -53,6 +72,20 @@ export default function Front(){
                                     <p className="text-xs font-medium">100+ AppStore reviews</p>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="absolute bottom-8 right-24 p-24 bg-slate-200 rounded-full border-4 divide-x-2 divide-y-2 border-dashed border-white">
+                            <div className="h-72 w-72 bg-purple opacity-20 rounded-full">
+                            </div>
+                            {/* <div className="relative bottom-48 w-full h-full bg-red-600"> */}
+                            <Image src={phone} alt="phone" className="absolute top-10 right-32 w-4/6"/>
+                            {/* </div> */}
+                            <Image src={redish} alt="redish" className="absolute -right-6 top-36 rotate-12"/>
+                            <Image src={purplish} alt="redish" className="absolute left-6 botton-20 rotate-12 w-24 h-24"/>
+                            <Image src={bluish} alt="redish" className="absolute left-6 top-12 -rotate-12 w-14 h-16"/>
+                            <div className="bg-red-500 h-6 w-6 rounded-full absolute right-10 border-0"></div>
+                            <div className="bg-blue-300 h-6 w-6 rounded-full absolute right-48 -top-3"></div>
+                            <div className="bg-blue-600 h-6 w-6 rounded-full absolute -left-3 top-52"></div>
                         </div>
                     </div>
                 </div>
@@ -128,9 +161,21 @@ export default function Front(){
 
                 {/* fourth div */}
                 <div className="mt-10 px-8">
-                    <div className="bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl">
+                    <div className="relative bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl overflow-hidden">
                         <p className="font-medium">Built out of frustration</p>
                         <p className="text-5xl mt-7 font-bold">Meet the ahead app</p>
+
+                        <div className="absolute bg-orange-100 h-64 w-64 rounded-full -left-16 bottom-6"></div>
+                        <div className="absolute bg-red-200 p-3 flex justify-center items-center left-96 bottom-32 rounded-full">
+                            <div className="bg-red-500 h-3 w-3 rounded-full "></div>
+                        </div>
+                        <div className="absolute rounded-full h-6 w-6 bg-pink-300 left-1/3 bottom-56"></div>
+                        <div className="absolute">
+                        <Image src={flower} alt="leaf" className="fixed"/>
+                        </div>
+                            <Image src={leaf} alt="leaf" className="absolute"/>
+                        <Image src={profile} alt="leaf" className="absolute"/>
+
 
                         <div className="flex mt-20">
                             <div className="basis-1/2"></div>
