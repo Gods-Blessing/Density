@@ -148,12 +148,73 @@ export default function Front(){
                 </div>
 
                 {/* fifth div */}
-                <div className="mt-16 px-28 flex flex-col items-center">
+                <div className="mt-28 px-28 flex flex-col items-center">
                     <p className="font-semibold text-lg pb-3 self-start">Wrong with self-improvement & how we're fixing it.</p>
                     <p className="text-5xl font-bold self-start">Self-improvement. Ugh.</p>
 
-                    <div className="flex h-33">
-                        <div className=""></div>
+                    <div className="flex h-33 mt-20 self-start pl-48 w-full overflow-y-auto no-scrollbar">
+                        <div className="w-1 h-60 bg-purple"></div>
+                        <div className="w-9/12 flex flex-col gap-12 -ml-2">
+                            <div className="relative flex gap-5 items-center w-full">
+                                <div className="h-3 w-3 rounded-full bg-purple self-start"></div>
+                                <div className="-mt-1 w-9/12">
+                                    <p className="text-2xl font-bold pb-4">It's not as easy as 1-2-3.</p>
+                                    <p className="font-semibold">The journey of change may be long, but our sessions are quick. We get   <br />
+                                    to the point and tell you what you want to know (and nothing else).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="relative flex gap-5 items-center w-full">
+                                <div className="h-3 w-3 rounded-full bg-purple self-start"></div>
+                                <div className="-mt-1 w-9/12">
+                                    <p className="text-2xl font-bold pb-4">It's not as easy as 1-2-3.</p>
+                                    <p className="font-semibold">The journey of change may be long, but our sessions are quick. We get   <br />
+                                    to the point and tell you what you want to know (and nothing else).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="relative flex gap-5 items-center w-full">
+                                <div className="h-3 w-3 rounded-full bg-purple self-start"></div>
+                                <div className="-mt-1 w-9/12">
+                                    <p className="text-2xl font-bold pb-4">It's not as easy as 1-2-3.</p>
+                                    <p className="font-semibold">The journey of change may be long, but our sessions are quick. We get   <br />
+                                    to the point and tell you what you want to know (and nothing else).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="relative flex gap-5 items-center w-full">
+                                <div className="h-3 w-3 rounded-full bg-purple self-start"></div>
+                                <div className="-mt-1 w-9/12">
+                                    <p className="text-2xl font-bold pb-4">It's not as easy as 1-2-3.</p>
+                                    <p className="font-semibold">The journey of change may be long, but our sessions are quick. We get   <br />
+                                    to the point and tell you what you want to know (and nothing else).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="relative flex gap-5 items-center w-full">
+                                <div className="h-3 w-3 rounded-full bg-purple self-start"></div>
+                                <div className="-mt-1 w-9/12">
+                                    <p className="text-2xl font-bold pb-4">It's not as easy as 1-2-3.</p>
+                                    <p className="font-semibold">The journey of change may be long, but our sessions are quick. We get   <br />
+                                    to the point and tell you what you want to know (and nothing else).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="relative flex gap-5 items-center w-full">
+                                <div className="h-3 w-3 rounded-full bg-purple self-start"></div>
+                                <div className="-mt-1 w-9/12">
+                                    <p className="text-2xl font-bold pb-4">It's not as easy as 1-2-3.</p>
+                                    <p className="font-semibold">The journey of change may be long, but our sessions are quick. We get   <br />
+                                    to the point and tell you what you want to know (and nothing else).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
