@@ -160,25 +160,28 @@ export default function Front(){
                 </div>
 
                 {/* fourth div */}
-                <div className="mt-10 px-8">
-                    <div className="relative bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl overflow-hidden">
+                <div className="mt-10 px-16">
+                    <div className="relative bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl">
                         <p className="font-medium">Built out of frustration</p>
-                        <p className="text-5xl mt-7 font-bold">Meet the ahead app</p>
-
-                        <div className="absolute bg-orange-100 h-64 w-64 rounded-full -left-16 bottom-6"></div>
+                        <p className="text-6xl mt-7 font-bold">Meet the ahead app</p>
+                        <div className="absolute  overflow-hidden left-0 bottom-5">
+                            <div className="relative right-20">
+                                <div className="bg-orange-100 h-64 w-64 rounded-full "></div>
+                            </div>
+                        </div>
                         <div className="absolute bg-red-200 p-3 flex justify-center items-center left-96 bottom-32 rounded-full">
                             <div className="bg-red-500 h-3 w-3 rounded-full "></div>
                         </div>
                         <div className="absolute rounded-full h-6 w-6 bg-pink-300 left-1/3 bottom-56"></div>
-                        <div className="absolute">
-                        <Image src={flower} alt="leaf" className="fixed"/>
+                        <div className="absolute right-24 -top-7">
+                            <Image src={flower} alt="leaf" className=""/>
                         </div>
-                            <Image src={leaf} alt="leaf" className="absolute"/>
+                        <Image src={leaf} alt="leaf" className="absolute right-32 top-28 -rotate-45"/>
                         <Image src={profile} alt="leaf" className="absolute"/>
 
 
                         <div className="flex mt-20">
-                            <div className="basis-1/2"></div>
+                            <div className="basis-3/5"></div>
 
                             <div className="basis-4/12 justify-self-end">
                                 <p className="text-lg">
@@ -376,7 +379,7 @@ export default function Front(){
 
                 {/* 9th div */}
                 <div className="px-8">
-                    <div className="bg-light-grayish px-10 pt-20 pb-2 rounded-3xl">
+                    <div className="bg-light-grayish px-16 pt-20 pb-2 rounded-3xl">
                         <div className="flex pb-10 justify-between pr-20">
                             <p className="text-5xl font-bold">Work with us</p>
                             <p className="text-5xl font-bold text-darkpurple">ahead</p>
@@ -472,25 +475,25 @@ export default function Front(){
                 <div className="px-28 py-20">
                     <p className="text-4xl font-bold pb-11">Open vacancies</p>
                     <div className="flex gap-5">
-                        <div className="py-6 px-10 bg-jobbackground rounded-xl">
+                        <div className="py-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
-                            <ul className="list-disc">
+                            <ul className="list-disc pl-4">
                                 <li>Full-time position</li>
                                 <li>Berlin or remote</li>
                                 <li>$65-85k, 0.5-1.50% equity share options</li>
                             </ul>
                         </div>
-                        <div className="p-6 bg-jobbackground rounded-xl">
+                        <div className="p-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
-                            <ul className="list-disc">
+                            <ul className="list-disc pl-4">
                                 <li>Full-time position</li>
                                 <li>Berlin or remote</li>
                                 <li>$65-85k, 0.5-1.50% equity share options</li>
                             </ul>
                         </div>
-                        <div className="p-6 bg-jobbackground rounded-xl">
+                        <div className="p-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
-                            <ul className="list-disc">
+                            <ul className="list-disc pl-4">
                                 <li>Full-time position</li>
                                 <li>Berlin or remote</li>
                                 <li>$65-85k, 0.5-1.50% equity share options</li>
