@@ -35,6 +35,21 @@ import { start } from "repl";
 export default function Front(){
     gsap.registerPlugin(ScrollTrigger);
 
+    // div1 refs
+    const div1_container = useRef(null);
+    const div1_spirit = useRef(null);
+    const div1_balls = useRef(null);
+    const div1_heading = useRef(null);
+    const div1_leaf1 = useRef(null);
+    const div1_leaf2 = useRef(null);
+    const div1_ball1 = useRef(null);
+    const div1_ball2 = useRef(null);
+    const div1_ball3 = useRef(null);
+
+    // div 3 ref
+    const div3_container = useRef(null);
+    const div3_heading = useRef(null);
+
     // div4 refs
     const div4_container = useRef(null);
     const div4_myFlower = useRef(null);
@@ -43,6 +58,7 @@ export default function Front(){
     const div4_bigball = useRef(null);
     
     // div 5 refs
+    const div5_container = useRef(null)
     const div5_bluespirit = useRef(null);
     const div5_heading = useRef(null);
     const div5_smallheading = useRef(null);
@@ -67,13 +83,72 @@ export default function Front(){
     const div8_container = useRef(null);
     const div8_btn = useRef(null);
 
-    let anime = (ani: any, container: any)=>{
+    // div 10 refs
+    const div10_container = useRef(null);
+    const div10_heading = useRef(null);
+
+
+    let anime = (ani: any, container: any )=>{
         ScrollTrigger.create({
             animation: ani,
             trigger: container.current,
             start:"30% 80%"
         })
     }
+
+    // for div1
+    useLayoutEffect(()=>{
+        let t1 = gsap.fromTo(div1_spirit.current, 
+            {rotation: 40},
+            {rotation: 0, duration: 0.7})
+
+        let t2 = gsap.fromTo(div1_balls.current, 
+            {rotation: -40},
+            {rotation: 0, duration: 0.7})
+
+        let t3 = gsap.fromTo(div1_heading.current, 
+            {marginLeft: -200},
+            {marginLeft: 0, duration: 0.9})
+        
+        let t4 = gsap.fromTo(div1_leaf1.current, 
+            {rotation: 0},
+            {rotation: 300, duration: 0.8})
+
+        let t5 = gsap.fromTo(div1_leaf2.current, 
+            {rotation: -40},
+            {rotation: 40, duration: 1})
+
+        let t6 = gsap.fromTo(div1_ball1.current, 
+            {scale: 1.3},
+            {scale: 1, duration: 2})
+
+        let t7 = gsap.fromTo(div1_ball2.current, 
+            {scale: 1.4},
+            {scale: 1, duration: 3})
+
+        let t8 = gsap.fromTo(div1_ball3.current, 
+            {scale: 0.6},
+            {scale: 1, duration: 4})
+        
+        anime(t1, div1_container)
+        anime(t2, div1_container)
+        anime(t3, div1_container)
+        anime(t4, div1_container)
+        anime(t5, div1_container)
+        anime(t6, div1_container)
+        anime(t7, div1_container)
+        anime(t8, div1_container)
+
+    },[])
+
+    // for div3
+    useLayoutEffect(()=>{
+        let t1 = gsap.fromTo(div3_heading.current, 
+            {scale: 0.2, marginLeft: -1000},
+            {scale:1, marginLeft: 0, duration: 2})
+
+        anime(t1, div3_container)
+    },[])
 
     // for div4
     useLayoutEffect(()=>{
@@ -107,20 +182,20 @@ export default function Front(){
     // for div5
     useLayoutEffect(()=>{
         
-        let ctx = gsap.context(()=>{
-            gsap.to(div5_bluespirit.current, {duration: 2, motionPath: '#path'})
-            gsap.fromTo(div5_heading.current,
-                {scale: 0.2, marginLeft: -200},
-                {scale:1, duration: 2, marginLeft: 0,} 
-            )
-            gsap.fromTo(div5_smallheading.current,
-                {scale: 0.2, marginLeft: -200},
-                {scale:1, duration: 2, marginLeft: 0} 
-            )
+        let t1 = gsap.to(div5_bluespirit.current, {duration: 2, motionPath: '#path'})
 
-        })
+        let t2 = gsap.fromTo(div5_heading.current,
+            {scale: 0.2, marginLeft: -200},
+            {scale:1, duration: 2, marginLeft: 0,} 
+        )
+        let t3 = gsap.fromTo(div5_smallheading.current,
+            {scale: 0.2, marginLeft: -200},
+            {scale:1, duration: 2, marginLeft: 0} 
+        )
 
-        return ()=> ctx.revert();
+        anime(t1, div5_container);
+        anime(t2, div5_container);
+        anime(t3, div5_container);
     },[])
 
     // for div9
@@ -210,6 +285,15 @@ export default function Front(){
         anime(t1, div8_container);
     }, [])
 
+    // for div10
+    useLayoutEffect(()=>{
+        let t1 = gsap.fromTo(div10_heading.current, 
+            {marginLeft: -200},
+            {marginLeft: 0, duration: 0.7})
+
+        anime(t1, div10_container)
+    }, [])
+
 
 
 
@@ -219,20 +303,20 @@ export default function Front(){
 
                 {/* first section */}
                 <div className="px-8 ">
-                    <div className="relative flex justify-between bg-regal-blue py-24 rounded-3xl px-16 overflow-hidden">
-                        <div className="absolute h-9 w-9 bg-red-500 rounded-full z-10 -bottom-5 left-44"></div>
-                        <div className="absolute h-9 w-9 bg-red-300 rounded-full z-10 -left-3 bottom-24"></div>
-                        <div className="absolute h-8 w-8 bg-red-300 rounded-full z-10 right-48 -top-2"></div>
+                    <div ref={div1_container} className="relative flex justify-between bg-regal-blue py-24 rounded-3xl px-16 overflow-hidden">
+                        <div ref={div1_ball1} className="absolute h-9 w-9 bg-red-500 rounded-full z-10 -bottom-5 left-44"></div>
+                        <div ref={div1_ball2} className="absolute h-9 w-9 bg-red-300 rounded-full z-10 -left-3 bottom-24"></div>
+                        <div ref={div1_ball3} className="absolute h-8 w-8 bg-red-300 rounded-full z-10 right-48 -top-2"></div>
                         <div className="absolute h-5 w-5 bg-red-300 rounded-full z-10 left-1/3 top-20"></div>
                         <div className="absolute h-6 w-6 bg-orange-300 rounded-full flex justify-center items-center left-1/4 top-28">
                             <div className="h-3 w-3 bg-orange-600 rounded-full"></div>
                         </div>
-                        <div className="absolute h-7 w-14 bg-green-400 rounded-t-full left-1/4 top-16 rotate-45"></div>
-                        <div className="absolute h-8 w-16 bg-green-500 rounded-t-full left-24 -top-3 -rotate-45"></div>
+                        <div ref={div1_leaf2} className="absolute h-7 w-14 bg-green-400 rounded-t-full left-1/4 top-16 rotate-45"></div>
+                        <div ref={div1_leaf1} className="absolute h-8 w-16 bg-green-500 rounded-t-full left-24 -top-3 -rotate-45"></div>
 
                         <div className="flex flex-col z-20">
                             <p className='font-semibold mb-4 z-20'>Ahead app</p>
-                            <p className=" text-7xl font-bold">
+                            <p ref={div1_heading} className=" text-7xl font-bold">
                                 Master your life <br />
                                 by mastering <br />
                                 emotions
@@ -265,14 +349,23 @@ export default function Front(){
                             <div className="h-72 w-72 bg-purple opacity-20 rounded-full">
                             </div>
                             {/* <div className="relative bottom-48 w-full h-full bg-red-600"> */}
-                            <Image src={phone} alt="phone" className="absolute top-10 right-32 w-4/6"/>
-                            {/* </div> */}
-                            <Image src={redish} alt="redish" className="absolute -right-6 top-36 rotate-12"/>
-                            <Image src={purplish} alt="redish" className="absolute left-6 botton-20 rotate-12 w-24 h-24"/>
-                            <Image src={bluish} alt="redish" className="absolute left-6 top-12 -rotate-12 w-14 h-16"/>
-                            <div className="bg-red-500 h-6 w-6 rounded-full absolute right-10 border-0"></div>
-                            <div className="bg-blue-300 h-6 w-6 rounded-full absolute right-48 -top-3"></div>
-                            <div className="bg-blue-600 h-6 w-6 rounded-full absolute -left-3 top-52"></div>
+                                <Image src={phone} alt="phone" className="absolute top-10 right-32 w-4/6"/>
+                                {/* </div> */}
+                            <div ref={div1_spirit} className="absolute top-0 left-0 rounded-full border-none w-full h-full">
+                                <div className="relative  w-full h-full rounded-full">
+                                    <Image src={redish} alt="redish" className="absolute -right-6 top-36 rotate-12"/>
+                                    <Image src={purplish} alt="redish" className="absolute left-6 bottom-0 rotate-12 w-24 h-24"/>
+                                    <Image src={bluish} alt="redish" className="absolute left-6 top-12 -rotate-12 w-14 h-16"/>
+
+                                </div>
+                            </div>
+                            <div ref={div1_balls} className="absolute w-full h-full rounded-full border-none top-0 left-5">
+                                <div className="relative h-full w-full rounded-full">
+                                    <div className="bg-red-500 h-6 w-6 rounded-full absolute right-10 bottom-20 border-0"></div>
+                                    <div className="bg-blue-300 h-6 w-6 rounded-full absolute right-48 -top-3"></div>
+                                    <div className="bg-blue-600 h-6 w-6 rounded-full absolute -left-3 top-52"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -301,9 +394,9 @@ export default function Front(){
                 </div>
 
                 {/* third div */}
-                <div className="mt-8">
+                <div ref={div3_container} className="mt-8">
                     <div className="px-16">
-                        <p className="text-4xl font-bold">Does this sound familiar...</p>
+                        <p ref={div3_heading} className="text-4xl font-bold">Does this sound familiar...</p>
                     </div>
 
                     <div className="flex gap-10 py-12 px-10 overflow-x-scroll items-center no-scrollbar">
@@ -386,7 +479,7 @@ export default function Front(){
                 </div>
 
                 {/* fifth div */}
-                <div className="relative mt-28 px-28 flex flex-col items-center">
+                <div ref={div5_container} className="relative mt-28 px-28 flex flex-col items-center">
                     <Image src={bluish} alt="bluish " className="absolute left-1/2 top-5 w-16 rotate-12"/>
                     <p ref={div5_smallheading} className="font-semibold text-lg pb-3 self-start">Wrong with self-improvement & how we're fixing it.</p>
                     <p ref={div5_heading} className="text-5xl font-bold self-start">Self-improvement. Ugh.</p>
@@ -663,8 +756,8 @@ export default function Front(){
                 </div>
 
                 {/* 10th div */}
-                <div className="px-28 py-20">
-                    <p className="text-4xl font-bold pb-11">Open vacancies</p>
+                <div ref={div10_container} className="px-28 py-20">
+                    <p ref={div10_heading} className="text-4xl font-bold pb-11">Open vacancies</p>
                     <div className="flex gap-5">
                         <div className="py-6 px-7 bg-jobbackground rounded-xl">
                             <p className="font-bold mb-3">Senior Full-Stack Engineer</p>
