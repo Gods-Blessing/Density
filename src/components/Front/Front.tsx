@@ -27,11 +27,14 @@ import bluish from '../../../public/div1/bluishcrying-removebg-preview.png';
 import flower from '../../../public/div4/flower.png';
 import profile from '../../../public/div4/profile.png';
 import leaf from '../../../public/div4/leaf.png';
+import { start } from "repl";
 
 
 
 
 export default function Front(){
+    gsap.registerPlugin(ScrollTrigger);
+
     // div4 refs
     const div4_myFlower = useRef(null);
     const div4_leaf1 = useRef(null);
@@ -50,7 +53,20 @@ export default function Front(){
     const div9_spirit = useRef(null);
 
     // div 7 refs
+    const div7_container = useRef(null);
     const div7_tag1 = useRef(null);
+    const div7_tag2 = useRef(null);
+    const div7_tag3 = useRef(null);
+    const div7_sq1 = useRef(null);
+    const div7_sq2 = useRef(null);
+    const div7_sq3 = useRef(null);
+    const div7_sq4 = useRef(null);
+
+    // div 8 refs 
+    const div8_container = useRef(null);
+    const div8_btn = useRef(null);
+
+
 
     // for div4
     useLayoutEffect(()=>{
@@ -121,16 +137,71 @@ export default function Front(){
         };
     }, [])
 
-    // for div7
+    // for div7 and 8
     useLayoutEffect(()=>{
-    gsap.registerPlugin(ScrollTrigger);
+        
+        //Note: small experiment
+        // gsap.to(div7_tag1.current, {
+        //     scrollTrigger: {
+        //         trigger:div7_container.current,
+        //         start:"30% 80%",
+        //         // markers: true
+        //     },
+        //     rotation: 360,
+        //     duration:3
+        // })
 
-        if(ScrollTrigger.isInViewport('.tag1', 0.5)){
-            gsap.fromTo(div7_tag1, 
-                {scale:0.2},
-                {scale:1, duration:2}
-                )
+        let t1 = gsap.timeline({duration: 0.5});
+            t1.fromTo(div7_tag1.current, {scale: 0.2}, {scale: 1})
+
+        let t2 = gsap.timeline({duration: 0.5});
+            t2.fromTo(div7_tag2.current, {scale: 0.2}, {scale: 1})
+
+        let t3 = gsap.timeline({duration: 0.5});
+            t3.fromTo(div7_tag3.current, {scale: 0.2}, {scale: 1})
+
+        let t4 = gsap.timeline({duration: 0.5});
+            t4.fromTo(div7_sq1.current, {scale: 0.2}, {scale: 1})
+
+        let t5 = gsap.timeline({duration: 0.5});
+            t5.fromTo(div7_sq2.current, {scale: 0.2}, {scale: 1})
+
+        let t6 = gsap.timeline({duration: 0.5});
+            t6.fromTo(div7_sq3.current, {scale: 0.2}, {scale: 1})
+
+        let t7 = gsap.timeline({duration: 0.5});
+            t7.fromTo(div7_sq4.current, {scale: 0.2}, {scale: 1})
+
+        let anime = (ani: any)=>{
+            ScrollTrigger.create({
+                animation: ani,
+                trigger: div7_container.current,
+                start:"30% 80%"
+            })
         }
+        
+        anime(t1);
+        anime(t2);
+        anime(t3);
+        anime(t4);
+        anime(t5);
+        anime(t6);
+        anime(t7);
+    }, [])
+
+    // div 8 
+    useLayoutEffect(()=>{
+        let t1 = gsap.timeline({duration: 0.5});
+            t1.fromTo(div8_btn.current, {scale: 0.2}, {scale: 1})
+
+        let anime = (ani: any)=>{
+            ScrollTrigger.create({
+                animation: ani,
+                trigger: div8_container.current,
+                start:"30% 80%"
+            })
+        }
+        anime(t1);
     }, [])
 
 
@@ -399,7 +470,7 @@ export default function Front(){
 
                 {/* 7th div */}
                 <div className="px-8">
-                    <div className="py-20 px-6 bg-light-greenish rounded-3xl flex flex-col items-center">
+                    <div ref={div7_container} className="div7 py-20 px-6 bg-light-greenish rounded-3xl flex flex-col items-center">
                         <p className="font-semibold mb-8 text-xl">Let your friends, family, and co-workers (anonymously) rate your social skills.</p>
                         <p className="text-5xl font-bold">Ever wondered what others think of you?</p>
 
@@ -433,17 +504,17 @@ export default function Front(){
 
                                 <div className="absolute flex items-center gap-4 -mt-7 w-full">
                                     <div className="relative flex w-full">
-                                        <div className="absolute -left-28  flex flex-col items-center gap-4 basis-1/3">
-                                            <Image ref={div7_tag1} src={no1} alt="no1" className="tag1 w-12"/>
+                                        <div ref={div7_tag1} className="absolute -left-28  flex flex-col items-center gap-4 basis-1/3">
+                                            <Image  src={no1} alt="no1" className="tag1 w-12"/>
                                             <p className="text-center text-sm">Answer questions on your social skills</p>
                                         </div>
 
-                                        <div className="absolute left-52 flex flex-col items-center gap-4 basis-1/3">
+                                        <div ref={div7_tag2} className="absolute left-52 flex flex-col items-center gap-4 basis-1/3">
                                             <Image src={no2} alt="no1" className="w-12"/>
                                             <p className="text-center text-sm">Let others anonymously answer the same <br /> questions about you</p>
                                         </div>
 
-                                        <div className="absolute -right-32 flex flex-col items-center gap-4">
+                                        <div ref={div7_tag3} className="absolute -right-32 flex flex-col items-center gap-4">
                                             <Image src={no3} alt="no1" className="w-12"/>
                                             <p className="text-center text-sm">Find out where you and others see things <br /> the same way - and where not!</p>
                                         </div>
@@ -454,22 +525,22 @@ export default function Front(){
 
                         <div className="bg-white rounded-2xl h-44 w-1/2 flex justify-center items-center py-6 px-8 pr-12 shadow-xl">
                             <div className="relative border-2 border-gray justify-self-stretch w-full">
-                                <div className="absolute flex flex-col gap-3 -left-11 -top-16">
+                                <div ref={div7_sq1} className="absolute flex flex-col gap-3 -left-11 -top-16">
                                     <p className="px-4 py-2 rounded-lg text-white bg-ball1">You</p>
                                     <div className="w-5 h-5 rounded-full bg-ball1 self-end"></div>
                                 </div>
 
-                                <div className="absolute flex flex-col gap-3 left-32 -top-2">
+                                <div ref={div7_sq2} className="absolute flex flex-col gap-3 left-32 -top-2">
                                     <div className="w-5 h-5 rounded-full bg-ball2"></div>
                                     <p className="px-4 py-2 rounded-lg text-white bg-ball2">Anonymous1</p>
                                 </div>
 
-                                <div className="absolute flex flex-col gap-3 right-20 -top-16">
+                                <div ref={div7_sq3} className="absolute flex flex-col gap-3 right-20 -top-16">
                                     <p className="px-4 py-2 rounded-lg text-white bg-ball3">Anonymous2</p>
                                     <div className="w-5 h-5 rounded-full bg-ball3 "></div>
                                 </div>
 
-                                <div className="absolute flex flex-col gap-3 -right-32 -top-2">
+                                <div ref={div7_sq4} className="absolute flex flex-col gap-3 -right-32 -top-2">
                                     <div className="w-5 h-5 rounded-full bg-ball4"></div>
                                     <p className="px-4 py-2 rounded-lg text-white bg-ball4">Anonymous3</p>
                                 </div>
@@ -479,7 +550,7 @@ export default function Front(){
                 </div>
 
                 {/* 8th div */}
-                <div className="py-28 flex flex-col items-center">
+                <div ref={div8_container} className="py-28 flex flex-col items-center">
                     <p className="text-xl text-center">We take privacy seriously</p>
                     <p className="text-4xl text-center my-5 font-bold">Before you get started</p>
                     <p className="text-2xl text-center text-textgray">"We won't share your answers with anyone (and won't ever tell <br />
@@ -487,7 +558,7 @@ export default function Front(){
                     </p>
                     <p className="text-xl text-center my-6">with love, Jackie Chan</p>
 
-                    <button className="bg-black text-white rounded-full px-5 py-2 my-5">Start a test</button>
+                    <button ref={div8_btn} className="bg-black text-white rounded-full px-5 py-2 my-5">Start a test</button>
                     <p className="text-center text-textgray text-sm">Take only 5 minutes</p>
                 </div>
 
