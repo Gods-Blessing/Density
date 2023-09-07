@@ -7,7 +7,7 @@ It's basically an UI made using Nextjs.
 
 ## Tech Stack
 
-**FrontEnd:** Nextjs, Reactjs, tailwind css, TypeScript.
+**FrontEnd:** Nextjs, Reactjs, tailwind css, TypeScript, GSAP (for animations).
 
 ## Installation
 
