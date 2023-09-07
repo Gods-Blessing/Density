@@ -1,5 +1,12 @@
-import React from "react";
+'use client'
+
+import React, { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
+
+// gsap
+import { gsap } from "gsap";
+import { ScrollTrigger, MotionPathPlugin } from "gsap/all";
+
 
 // images imports
 import appleIcon from '../../../public/applepng.png';
@@ -25,6 +32,109 @@ import leaf from '../../../public/div4/leaf.png';
 
 
 export default function Front(){
+    // div4 refs
+    const div4_myFlower = useRef(null);
+    const div4_leaf1 = useRef(null);
+    const div4_leaf2 = useRef(null);
+    const div4_bigball = useRef(null);
+    const div4 = useRef(null);
+    
+    // div 5 refs
+    const div5_bluespirit = useRef(null);
+    const div5_heading = useRef(null);
+    const div5_smallheading = useRef(null);
+    
+    // div 9 refs 
+    const div9_leftheading = useRef(null);
+    const div9_rightheading = useRef(null);
+    const div9_spirit = useRef(null);
+
+    // div 7 refs
+    const div7_tag1 = useRef(null);
+
+    // for div4
+    useLayoutEffect(()=>{
+        let ctx = gsap.context(()=>{
+            gsap.to(div4_myFlower.current, {rotation: -360, duration:2})
+
+            gsap.to(div4_leaf1.current, {rotation: -400, duration: 2})
+            
+            gsap.fromTo(div4_leaf2.current, 
+                {rotation: 0, bottom: 20},
+                {rotation: -400, bottom: 180, duration: 2})
+
+            gsap.fromTo(div4_bigball.current, {
+                left:260,
+                bottom: -100,
+            },
+            {
+                left:0,
+                bottom:5,
+                duration:2
+            }
+            )
+        });
+
+        return ()=> ctx.revert();
+    },[])
+
+    // for div5
+    useLayoutEffect(()=>{
+        
+        let ctx = gsap.context(()=>{
+            gsap.to(div5_bluespirit.current, {duration: 2, motionPath: '#path'})
+            gsap.fromTo(div5_heading.current,
+                {scale: 0.2, marginLeft: -200},
+                {scale:1, duration: 2, marginLeft: 0,} 
+            )
+            gsap.fromTo(div5_smallheading.current,
+                {scale: 0.2, marginLeft: -200},
+                {scale:1, duration: 2, marginLeft: 0} 
+            )
+
+        })
+
+        return ()=> ctx.revert();
+    },[])
+
+    // for div9
+    useLayoutEffect(()=>{
+        let tl: any;
+        let ctx = gsap.context(()=>{
+            gsap.fromTo(div9_leftheading.current,
+                {scale: 0.2, marginLeft: -200},
+                {scale:1, duration: 1, marginLeft: 0,} 
+            )
+            gsap.fromTo(div9_rightheading.current,
+                {scale: 0.2, marginRight: -200},
+                {scale:1, duration: 1, marginRight: 0} 
+            )
+            tl = gsap.timeline({repeat: 0, duration: 2});
+                tl.to(div9_spirit.current, {rotation: -12, scale:1.2})
+                tl.to(div9_spirit.current, {rotation: 12, scale: 1.2})
+                tl.to(div9_spirit.current, {rotation: 0, scale: 1})
+        })
+
+        return ()=> {
+            ctx.revert()
+            tl.remove();
+        };
+    }, [])
+
+    // for div7
+    useLayoutEffect(()=>{
+    gsap.registerPlugin(ScrollTrigger);
+
+        if(ScrollTrigger.isInViewport('.tag1', 0.5)){
+            gsap.fromTo(div7_tag1, 
+                {scale:0.2},
+                {scale:1, duration:2}
+                )
+        }
+    }, [])
+
+
+
 
     return (
         <main>
@@ -161,22 +271,25 @@ export default function Front(){
 
                 {/* fourth div */}
                 <div className="mt-10 px-16">
-                    <div className="relative bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl">
+                    <div ref={div4} className="div4 relative bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl">
                         <p className="font-medium">Built out of frustration</p>
                         <p className="text-6xl mt-7 font-bold">Meet the ahead app</p>
-                        <div className="absolute  overflow-hidden left-0 bottom-5">
-                            <div className="relative right-20">
-                                <div className="bg-orange-100 h-64 w-64 rounded-full "></div>
+                        {/* big ball left bottom */}
+                        <div className="z-0 absolute h-96 w-1/2  overflow-hidden left-0 bottom-0">
+                            <div className="relative right-20 w-full h-full">
+                                <div ref={div4_bigball}  className="bg-orange-100 h-64 w-64 rounded-full absolute"></div>
                             </div>
                         </div>
+
                         <div className="absolute bg-red-200 p-3 flex justify-center items-center left-96 bottom-32 rounded-full">
                             <div className="bg-red-500 h-3 w-3 rounded-full "></div>
                         </div>
                         <div className="absolute rounded-full h-6 w-6 bg-pink-300 left-1/3 bottom-56"></div>
-                        <div className="absolute right-24 -top-7">
-                            <Image src={flower} alt="leaf" className=""/>
+                        <div  className="absolute right-24 -top-7">
+                            <Image src={flower} ref={div4_myFlower} alt="leaf" className="flowerr"/>
                         </div>
-                        <Image src={leaf} alt="leaf" className="absolute right-32 top-28 -rotate-45"/>
+                        <Image src={leaf} ref={div4_leaf1} alt="leaf" className="absolute right-32 top-28 -rotate-45"/>
+                        <Image src={leaf} ref={div4_leaf2} alt="leaf" className="absolute left-80 bottom-44 -rotate-45"/>
                         <Image src={profile} alt="leaf" className="absolute bottom-24 left-28 w-44"/>
 
 
@@ -198,8 +311,8 @@ export default function Front(){
                 {/* fifth div */}
                 <div className="relative mt-28 px-28 flex flex-col items-center">
                     <Image src={bluish} alt="bluish " className="absolute left-1/2 top-5 w-16 rotate-12"/>
-                    <p className="font-semibold text-lg pb-3 self-start">Wrong with self-improvement & how we're fixing it.</p>
-                    <p className="text-5xl font-bold self-start">Self-improvement. Ugh.</p>
+                    <p ref={div5_smallheading} className="font-semibold text-lg pb-3 self-start">Wrong with self-improvement & how we're fixing it.</p>
+                    <p ref={div5_heading} className="text-5xl font-bold self-start">Self-improvement. Ugh.</p>
 
                     <div className="flex h-33 mt-20 self-start pl-48 w-full overflow-y-auto no-scrollbar">
                         <div className="w-1 h-60 bg-purple"></div>
@@ -321,7 +434,7 @@ export default function Front(){
                                 <div className="absolute flex items-center gap-4 -mt-7 w-full">
                                     <div className="relative flex w-full">
                                         <div className="absolute -left-28  flex flex-col items-center gap-4 basis-1/3">
-                                            <Image src={no1} alt="no1" className="w-12"/>
+                                            <Image ref={div7_tag1} src={no1} alt="no1" className="tag1 w-12"/>
                                             <p className="text-center text-sm">Answer questions on your social skills</p>
                                         </div>
 
@@ -382,13 +495,13 @@ export default function Front(){
                 <div className="px-8">
                     <div className="bg-light-grayish px-16 pt-20 pb-2 rounded-3xl">
                         <div className="flex pb-10 justify-between pr-20">
-                            <p className="text-5xl font-bold">Work with us</p>
-                            <p className="text-5xl font-bold text-darkpurple">ahead</p>
+                            <p ref={div9_leftheading} className="text-5xl font-bold">Work with us</p>
+                            <p ref={div9_rightheading} className="text-5xl font-bold text-darkpurple">ahead</p>
                         </div>
 
                         <div className="flex justify-between">
                             <div className=" bg-white rounded-xl pt-2 self-start  shadow-xl">
-                                <Image src={purplespirit} alt="spirit" className="pt-6 ml-10"/>
+                                <Image ref={div9_spirit} src={purplespirit} alt="spirit" className="pt-6 ml-10"/>
 
                                 <div className="py-6 px-10">
                                     <p className="font-semibold py-2 text-xl">About</p>
@@ -534,4 +647,8 @@ export default function Front(){
             </section>
         </main>
     )
+}
+
+function createSVG(arg0: string, svg: any, arg2: { cx: number; cy: number; r: number; }) {
+    throw new Error("Function not implemented.");
 }
