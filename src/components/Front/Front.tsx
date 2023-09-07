@@ -36,11 +36,11 @@ export default function Front(){
     gsap.registerPlugin(ScrollTrigger);
 
     // div4 refs
+    const div4_container = useRef(null);
     const div4_myFlower = useRef(null);
     const div4_leaf1 = useRef(null);
     const div4_leaf2 = useRef(null);
     const div4_bigball = useRef(null);
-    const div4 = useRef(null);
     
     // div 5 refs
     const div5_bluespirit = useRef(null);
@@ -48,6 +48,7 @@ export default function Front(){
     const div5_smallheading = useRef(null);
     
     // div 9 refs 
+    const div9_container = useRef(null);
     const div9_leftheading = useRef(null);
     const div9_rightheading = useRef(null);
     const div9_spirit = useRef(null);
@@ -66,20 +67,25 @@ export default function Front(){
     const div8_container = useRef(null);
     const div8_btn = useRef(null);
 
-
+    let anime = (ani: any, container: any)=>{
+        ScrollTrigger.create({
+            animation: ani,
+            trigger: container.current,
+            start:"30% 80%"
+        })
+    }
 
     // for div4
     useLayoutEffect(()=>{
-        let ctx = gsap.context(()=>{
-            gsap.to(div4_myFlower.current, {rotation: -360, duration:2})
+        let t1 = gsap.to(div4_myFlower.current, {rotation: -360, duration:2})
 
-            gsap.to(div4_leaf1.current, {rotation: -400, duration: 2})
+        let t2 = gsap.to(div4_leaf1.current, {rotation: -400, duration: 2})
             
-            gsap.fromTo(div4_leaf2.current, 
+        let t3 = gsap.fromTo(div4_leaf2.current, 
                 {rotation: 0, bottom: 20},
                 {rotation: -400, bottom: 180, duration: 2})
 
-            gsap.fromTo(div4_bigball.current, {
+        let t4 = gsap.fromTo(div4_bigball.current, {
                 left:260,
                 bottom: -100,
             },
@@ -89,9 +95,13 @@ export default function Front(){
                 duration:2
             }
             )
-        });
 
-        return ()=> ctx.revert();
+            anime(t1, div4_container);
+            anime(t2, div4_container);
+            anime(t3, div4_container);
+            anime(t4, div4_container);
+            
+
     },[])
 
     // for div5
@@ -115,29 +125,25 @@ export default function Front(){
 
     // for div9
     useLayoutEffect(()=>{
-        let tl: any;
-        let ctx = gsap.context(()=>{
-            gsap.fromTo(div9_leftheading.current,
+            let t1 = gsap.fromTo(div9_leftheading.current,
                 {scale: 0.2, marginLeft: -200},
                 {scale:1, duration: 1, marginLeft: 0,} 
             )
-            gsap.fromTo(div9_rightheading.current,
+            let t2 = gsap.fromTo(div9_rightheading.current,
                 {scale: 0.2, marginRight: -200},
                 {scale:1, duration: 1, marginRight: 0} 
             )
-            tl = gsap.timeline({repeat: 0, duration: 2});
-                tl.to(div9_spirit.current, {rotation: -12, scale:1.2})
-                tl.to(div9_spirit.current, {rotation: 12, scale: 1.2})
-                tl.to(div9_spirit.current, {rotation: 0, scale: 1})
-        })
+            let t3 = gsap.timeline({repeat: 0, duration: 2});
+                t3.to(div9_spirit.current, {rotation: -12, scale:1.2})
+                t3.to(div9_spirit.current, {rotation: 12, scale: 1.2})
+                t3.to(div9_spirit.current, {rotation: 0, scale: 1})
 
-        return ()=> {
-            ctx.revert()
-            tl.remove();
-        };
+            anime(t1, div9_container);
+            anime(t2, div9_container);
+            anime(t3, div9_container);
     }, [])
 
-    // for div7 and 8
+    // for div7
     useLayoutEffect(()=>{
         
         //Note: small experiment
@@ -189,19 +195,19 @@ export default function Front(){
         anime(t7);
     }, [])
 
-    // div 8 
+    // for div8 
     useLayoutEffect(()=>{
         let t1 = gsap.timeline({duration: 0.5});
             t1.fromTo(div8_btn.current, {scale: 0.2}, {scale: 1})
 
-        let anime = (ani: any)=>{
-            ScrollTrigger.create({
-                animation: ani,
-                trigger: div8_container.current,
-                start:"30% 80%"
-            })
-        }
-        anime(t1);
+        // let anime = (ani: any)=>{
+        //     ScrollTrigger.create({
+        //         animation: ani,
+        //         trigger: div8_container.current,
+        //         start:"30% 80%"
+        //     })
+        // }
+        anime(t1, div8_container);
     }, [])
 
 
@@ -342,7 +348,7 @@ export default function Front(){
 
                 {/* fourth div */}
                 <div className="mt-10 px-16">
-                    <div ref={div4} className="div4 relative bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl">
+                    <div  ref={div4_container} className="div4 relative bg-light-pinkish py-20 pr-20 pl-11 rounded-3xl">
                         <p className="font-medium">Built out of frustration</p>
                         <p className="text-6xl mt-7 font-bold">Meet the ahead app</p>
                         {/* big ball left bottom */}
@@ -564,7 +570,7 @@ export default function Front(){
 
                 {/* 9th div */}
                 <div className="px-8">
-                    <div className="bg-light-grayish px-16 pt-20 pb-2 rounded-3xl">
+                    <div ref={div9_container} className="bg-light-grayish px-16 pt-20 pb-2 rounded-3xl">
                         <div className="flex pb-10 justify-between pr-20">
                             <p ref={div9_leftheading} className="text-5xl font-bold">Work with us</p>
                             <p ref={div9_rightheading} className="text-5xl font-bold text-darkpurple">ahead</p>
